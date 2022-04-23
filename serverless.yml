@@ -21,6 +21,8 @@ provider:
             - !GetAtt UrlStatsTable.Arn
   environment:
     STAGE: ${opt:stage}
+    URL_TABLE_NAME: !Ref UrlTable
+    URL_STATS_TABLE_NAME: !Ref UrlStatsTable
 functions:
   handleCreateUrl:
     handler: src/handlers/createUrl.handler

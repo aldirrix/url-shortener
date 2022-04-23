@@ -16,7 +16,9 @@
     "serverless-plugin-typescript": "^2.1.2",
     "typescript": "^4.6.3"
   },
-  "dependencies": {},
+  "dependencies": {
+    "env-var": "^7.1.1"
+  },
   "scripts": {
     "dependencies": "sls dynamodb instal",
     "start": "sls offline start --stage dev",
