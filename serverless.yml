@@ -18,6 +18,7 @@ provider:
             - dynamodb:UpdateItem
           Resource:
             - !GetAtt UrlTable.Arn
+            - !GetAtt UrlStatsTable.Arn
   environment:
     STAGE: ${opt:stage}
 functions:
@@ -27,6 +28,16 @@ functions:
       - http:
           path: url
           method: post
+  handleUrlCreatedEvent:
+    handler: src/handlers/urlCreatedEvent.handler
+    events:
+      - stream:
+          type: dynamodb
+          arn: !GetAtt UrlTable.StreamArn
+          startingPosition: LATEST
+          maximumRetryAttempts: 3
+          filterPatterns:
+            - eventName: [INSERT]
 resources:
   Resources:
     UrlTable:
@@ -39,6 +50,19 @@ resources:
             AttributeType: S
         KeySchema:
           - AttributeName: id
+            KeyType: HASH
+        StreamSpecification:
+          StreamViewType: NEW_IMAGE
+    UrlStatsTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: url-stats-table
+        BillingMode: PAY_PER_REQUEST
+        AttributeDefinitions:
+          - AttributeName: originalUrl
+            AttributeType: S
+        KeySchema:
+          - AttributeName: originalUrl
             KeyType: HASH
 custom:
   dynamodb:

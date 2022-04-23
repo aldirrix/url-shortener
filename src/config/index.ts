@@ -3,6 +3,7 @@ let envConfig;
 if (process.env.STAGE === "dev") {
   envConfig = {
     urlTableName: "url-table",
+    urlStatsTableName: "url-stats-table",
     dynamodb: {
       region: "localhost",
       endpoint: "http://localhost:8000",
@@ -13,6 +14,7 @@ if (process.env.STAGE === "dev") {
 } else {
   envConfig = {
     urlTableName: "url-table",
+    urlStatsTableName: "url-stats-table",
     dynamodb: {
       region: "eu-central-1",
     },
