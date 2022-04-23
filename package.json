@@ -19,7 +19,7 @@
   "dependencies": {},
   "scripts": {
     "dependencies": "sls dynamodb instal",
-    "start": "sls offline start",
+    "start": "sls offline start --stage dev",
     "build": "tsc",
     "test": "echo not implemented",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx ./src/",

@@ -7,8 +7,42 @@ provider:
   name: aws
   runtime: nodejs14.x
   region: eu-central-1
-
+  iam:
+    role:
+      statements:
+        - Effect: Allow
+          Action:
+            - dynamodb:Query
+            - dynamodb:GetItem
+            - dynamodb:PutItem
+            - dynamodb:UpdateItem
+          Resource:
+            - !GetAtt UrlTable.Arn
+  environment:
+    STAGE: ${opt:stage}
+functions:
+  handleCreateUrl:
+    handler: src/handlers/createUrl.handler
+    events:
+      - http:
+          path: url
+          method: post
+resources:
+  Resources:
+    UrlTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: url-table
+        BillingMode: PAY_PER_REQUEST
+        AttributeDefinitions:
+          - AttributeName: id
+            AttributeType: S
+        KeySchema:
+          - AttributeName: id
+            KeyType: HASH
 custom:
   dynamodb:
     stages:
       - dev
+    start:
+      migrate: true
