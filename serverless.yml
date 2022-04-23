@@ -1,7 +1,14 @@
 service: url-shortener
 plugins:
   - serverless-plugin-typescript
+  - serverless-dynamodb-local
+  - serverless-offline #serverless-offline needs to be last in the list
 provider:
   name: aws
   runtime: nodejs14.x
   region: eu-central-1
+
+custom:
+  dynamodb:
+    stages:
+      - dev
