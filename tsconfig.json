@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "incremental": false,
+    "target": "ES2022",
+    "module": "commonjs",
+    "sourceMap": true,
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "outDir": "./build",
+    "allowJs": true
+  },
+  "include": ["src/"]
+}
