@@ -26,6 +26,7 @@
     "test": "echo not implemented",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx ./src/",
     "format": "prettier . --write",
-    "format:check": "prettier . --check"
+    "format:check": "prettier . --check",
+    "deploy": "serverless deploy --stage prod"
   }
 }
