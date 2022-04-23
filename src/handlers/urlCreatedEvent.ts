@@ -1,7 +1,7 @@
 import { DynamoDB } from "aws-sdk";
 import { DocumentClient } from "aws-sdk/clients/dynamodb";
 import { config } from "../config";
-import { Url, UrlStatsDataProvider } from "../dataProviders";
+import { Url, UrlStatsDataProvider } from "../dataproviders";
 
 const urlStatsDataProvider = new UrlStatsDataProvider(
   new DocumentClient(config.dynamodb),

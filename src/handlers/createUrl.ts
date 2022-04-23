@@ -1,7 +1,7 @@
 import { APIGatewayProxyResult, APIGatewayEvent } from "aws-lambda";
 import { DocumentClient } from "aws-sdk/clients/dynamodb";
 import { config } from "../config";
-import { CreateUrlParams, Url, UrlDataProvider } from "../dataProviders";
+import { CreateUrlParams, Url, UrlDataProvider } from "../dataproviders";
 import { generateRandomBase66String } from "../utils/random";
 
 const urlDataProvider = new UrlDataProvider(
