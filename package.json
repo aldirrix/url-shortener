@@ -20,7 +20,7 @@
     "env-var": "^7.1.1"
   },
   "scripts": {
-    "dependencies": "sls dynamodb instal",
+    "dependencies": "sls dynamodb install",
     "start": "sls offline start --stage dev",
     "build": "tsc",
     "test": "echo not implemented",

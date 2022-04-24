@@ -20,7 +20,7 @@ provider:
             - !GetAtt UrlTable.Arn
             - !GetAtt UrlStatsTable.Arn
   environment:
-    STAGE: ${opt:stage}
+    STAGE: ${sls:stage}
     URL_TABLE_NAME: !Ref UrlTable
     URL_STATS_TABLE_NAME: !Ref UrlStatsTable
 functions:
